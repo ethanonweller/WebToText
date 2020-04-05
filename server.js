@@ -22,7 +22,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
   from: process.env.USER,
-  to: "8106183110@vtext.com",
+  to: "RECIPIENT",
   subject: "Test image of dog, you're welcome",
   text: '',
   attachments: [
