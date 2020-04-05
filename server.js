@@ -5,17 +5,17 @@ app.use(express.static("public"))
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html") 
-  /* this sends the "index.html" file when people go to your-app.glitch.me/ */
+  /* this sends the "index.html" file when people go to app.glitch.me/ */
 })
 
 app.get("/send", (req, res) => {
-// where your node app starts
+// where node app starts
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.USER,
+    user: process.env.USER,    //login and password for sender
     pass: process.env.PASS,
   }
 });
@@ -28,13 +28,13 @@ var mailOptions = {
   attachments: [
     {
       filename: 'butter.jpeg',
-      path: 'https://post.healthline.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg',
+      path: 'https://post.healthline.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg',  // path of image
       cid: 'uniq-butter.jpeg' 
     }
   ]
 };
 
-transporter.sendMail(mailOptions, function(error, info){
+transporter.sendMail(mailOptions, function(error, info){    // handles errors
   if (error) {
     console.log(error);
   } else {
@@ -42,6 +42,6 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 }); 
   
-  res.redirect("/sent.html") // after sending the email, redirect back to "index.html" at your-app.glitch.me/
+  res.redirect("/sent.html") // after sending the email, redirect back to "index.html" at app.glitch.me/
 })
-app.listen(3000);
+app.listen(3000);   //allows for traffic
