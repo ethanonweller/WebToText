@@ -1,2 +1,4 @@
 # WebToText
-Webserver that sends a text of a random image on button click to any phone number
+A webserver that has two pages `index.html` and `sent.html`
+**index** is the main page where you can find the image sending link
+**sent** is the page the user is redirected to after an image has been successfully sent
